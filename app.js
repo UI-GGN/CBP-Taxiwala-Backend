@@ -27,6 +27,11 @@ mongoose
     console.error("Error connecting to mongo", err);
   });
 
+app.get("/", (req, res) => {
+    res.send("working!");
+});
+  
+
 app.use("/api/v1", user);
 
 // server starting

@@ -47,6 +47,7 @@ router.post("/users", async (req, res) => {
   let obj = {
     name: req.body.name,
     email: req.body.email,
+    employeeId: req.body.employeeId,
     usertype: "employee"
   };
   try{
@@ -56,8 +57,8 @@ router.post("/users", async (req, res) => {
         newuser = await userService.createUser(obj);
     }
     // Create token
-    const payload = user ? { id: user.id, email: user.email, usertype: user.usertype, phonenumber: user.phonenumber }
-     : { id: newuser.id, email: newuser.email, usertype: newuser.usertype, phonenumber: newuser.phonenumber };
+    const payload = user ? { id: user.id, employeeId: user.employeeId, email: user.email, name: user.name, usertype: user.usertype, phonenumber: user.phonenumber }
+     : { id: newuser.id, employeeId: newuser.employeeId, email: newuser.email, name: newuser.name, usertype: newuser.usertype, phonenumber: newuser.phonenumber };
     jwt.sign(
         payload,
         "jwtsecret123",

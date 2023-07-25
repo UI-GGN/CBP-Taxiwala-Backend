@@ -15,7 +15,10 @@ const userschema = new schema({
     required: true
   },
   phonenumber: {
-    type: Number
+    type: String
+  },
+  employeeId: {
+    type: String
   },
   date: {
     type: Date,

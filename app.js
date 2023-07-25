@@ -6,8 +6,8 @@ const user = require("./routes/user");
 require('dotenv').config()
 
 var app = express();
-app.use(cors());
 
+app.use(cors());
 // middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

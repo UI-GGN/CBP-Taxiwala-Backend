@@ -42,6 +42,20 @@ router.get("/users/:id", auth, async (req, res) => {
 });
   
 
+// view particular user
+router.get("/users/:emailid/usertype", async (req, res) => {
+    try {
+        const user = await userService.getUserByEmail(req.params.emailid);        
+        if(user && user.usertype){
+            return res.json({ data: { usertype: user.usertype }, status: "success" });
+        }
+        res.json({ data: { usertype: null }, status: "success" });
+      } catch (err) {
+        res.status(500).json({ error: err.message });
+      }
+});
+
+
 // add user
 router.post("/users", async (req, res) => {
   let obj = {
